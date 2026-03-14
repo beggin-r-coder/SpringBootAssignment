@@ -24,6 +24,6 @@
 	
 	<a href="register.html">Sign Up</a>
 	
-	<a href="forgotpassword">Forgot Password </a>
+	<a href="forgotPassword.jsp">Forgot Password </a>
 </body>
 </html>
