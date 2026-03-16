@@ -3,31 +3,234 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #0a0a0f;
+    font-family: 'DM Sans', sans-serif;
+    overflow: hidden;
+    position: relative;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(99,60,180,0.18) 0%, transparent 70%);
+    top: -150px; left: -150px;
+    pointer-events: none;
+    animation: orb1 8s ease-in-out infinite alternate;
+  }
+  body::after {
+    content: '';
+    position: fixed;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(30,180,140,0.13) 0%, transparent 70%);
+    bottom: -100px; right: -100px;
+    pointer-events: none;
+    animation: orb2 10s ease-in-out infinite alternate;
+  }
+
+  @keyframes orb1 { from { transform: translate(0,0); } to { transform: translate(60px, 40px); } }
+  @keyframes orb2 { from { transform: translate(0,0); } to { transform: translate(-50px, -30px); } }
+
+  .grid-bg {
+    position: fixed; inset: 0; pointer-events: none;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
+  .card {
+    position: relative; z-index: 10;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.09);
+    border-radius: 24px;
+    padding: 52px 48px 44px;
+    width: 440px;
+    backdrop-filter: blur(24px);
+    box-shadow: 0 32px 80px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.08);
+    animation: fadeUp 0.7s cubic-bezier(0.22,1,0.36,1) both;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(32px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .logo {
+    width: 44px; height: 44px;
+    background: linear-gradient(135deg, #1eb88c, #7c4dff);
+    border-radius: 12px;
+    margin: 0 auto 28px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px; color: #fff;
+    animation: fadeUp 0.7s 0.1s cubic-bezier(0.22,1,0.36,1) both;
+    opacity: 0; animation-fill-mode: forwards;
+  }
+
+  .card h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px; font-weight: 600;
+    color: #f0eeff;
+    text-align: center;
+    margin-bottom: 6px;
+    letter-spacing: -0.3px;
+    animation: fadeUp 0.7s 0.15s cubic-bezier(0.22,1,0.36,1) both;
+    opacity: 0; animation-fill-mode: forwards;
+  }
+  .card p.sub {
+    font-size: 14px; color: rgba(255,255,255,0.38);
+    text-align: center; margin-bottom: 32px;
+    font-weight: 300;
+    animation: fadeUp 0.7s 0.2s cubic-bezier(0.22,1,0.36,1) both;
+    opacity: 0; animation-fill-mode: forwards;
+  }
+
+  /* Hide the original table layout visually, keep it in DOM */
+  table { width: 100%; border-collapse: separate; border-spacing: 0; }
+  tr { display: block; margin-bottom: 18px; }
+  tr:last-child { margin-bottom: 0; }
+
+  td { display: block; }
+  td:first-child {
+    font-size: 12px; font-weight: 500; letter-spacing: 0.06em;
+    text-transform: uppercase; color: rgba(255,255,255,0.35);
+    margin-bottom: 7px; padding: 0;
+  }
+  td:last-child { padding: 0; }
+
+  /* Staggered row animations */
+  tr:nth-child(1) { animation: fadeUp 0.7s 0.25s cubic-bezier(0.22,1,0.36,1) both; opacity: 0; animation-fill-mode: forwards; }
+  tr:nth-child(2) { animation: fadeUp 0.7s 0.30s cubic-bezier(0.22,1,0.36,1) both; opacity: 0; animation-fill-mode: forwards; }
+  tr:nth-child(3) { animation: fadeUp 0.7s 0.35s cubic-bezier(0.22,1,0.36,1) both; opacity: 0; animation-fill-mode: forwards; }
+  tr:nth-child(4) { animation: fadeUp 0.7s 0.40s cubic-bezier(0.22,1,0.36,1) both; opacity: 0; animation-fill-mode: forwards; }
+  tr:nth-child(5) { animation: fadeUp 0.7s 0.45s cubic-bezier(0.22,1,0.36,1) both; opacity: 0; animation-fill-mode: forwards; }
+  tr:nth-child(6) { animation: fadeUp 0.7s 0.50s cubic-bezier(0.22,1,0.36,1) both; opacity: 0; animation-fill-mode: forwards; }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="password"] {
+    width: 100%;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 12px;
+    padding: 13px 16px;
+    font-size: 15px; font-family: 'DM Sans', sans-serif;
+    color: #f0eeff;
+    outline: none;
+    transition: border-color 0.25s, background 0.25s, box-shadow 0.25s;
+    caret-color: #7c4dff;
+  }
+  input[type="text"]::placeholder,
+  input[type="email"]::placeholder,
+  input[type="password"]::placeholder { color: rgba(255,255,255,0.2); }
+
+  input[type="text"]:hover,
+  input[type="email"]:hover,
+  input[type="password"]:hover {
+    border-color: rgba(255,255,255,0.22);
+    background: rgba(255,255,255,0.07);
+  }
+  input[type="text"]:focus,
+  input[type="email"]:focus,
+  input[type="password"]:focus {
+    border-color: rgba(30,184,140,0.7);
+    background: rgba(30,184,140,0.07);
+    box-shadow: 0 0 0 4px rgba(30,184,140,0.12);
+  }
+
+  /* Button row — last tr with submit/reset */
+  tr:last-child td {
+    display: inline-block;
+  }
+  tr:last-child {
+    display: flex;
+    gap: 12px;
+    margin-top: 8px;
+  }
+  tr:last-child td { flex: 1; margin: 0; }
+
+  input[type="submit"],
+  input[type="reset"] {
+    width: 100%;
+    border: none; outline: none;
+    border-radius: 12px;
+    padding: 13px 0;
+    font-size: 14px; font-weight: 500;
+    font-family: 'DM Sans', sans-serif;
+    cursor: pointer;
+    transition: transform 0.18s, box-shadow 0.18s, opacity 0.18s, background 0.18s;
+    letter-spacing: 0.02em;
+  }
+
+  input[type="submit"] {
+    background: linear-gradient(135deg, #1eb88c 0%, #0e9070 100%);
+    color: #fff;
+    box-shadow: 0 4px 20px rgba(30,184,140,0.4);
+  }
+  input[type="submit"]:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 28px rgba(30,184,140,0.55);
+  }
+  input[type="submit"]:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 10px rgba(30,184,140,0.3);
+  }
+
+  input[type="reset"] {
+    background: rgba(255,255,255,0.06);
+    color: rgba(255,255,255,0.5);
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+  input[type="reset"]:hover {
+    background: rgba(255,255,255,0.1);
+    color: rgba(255,255,255,0.75);
+    border-color: rgba(255,255,255,0.2);
+  }
+</style>
 </head>
 <body>
-	<form action="register" method ="post">
-		<table>
-			<tr>
-				<td>Username :  </td>
-				<td><input type = "text" name="user"></input></td>
-			</tr>
-			<tr>
-				<td>Email :  </td>
-				<td><input type = "email" name="email"></input></td>
-			</tr>
-			<tr>
-				<td>Password</td>
-				<td><input type = "password" name="password"></input></td>
-			</tr>
-			<tr>
-			<tr>
-				<td>Confirm Password</td>
-				<td><input type = "password" name="confirmpassword"></input></td>
-			</tr>
-			<tr>
-				<td><input type = "submit" value = "Login"></input></td>
-				<td><input type = "reset" value = "Reset"></input></td>
-		</table>
-	</form>
+
+<div class="grid-bg"></div>
+
+<div class="card">
+  <h1>Create account</h1>
+  <p class="sub">Join us — it only takes a moment</p>
+
+  <form action="sign-up" method="post">
+    <table>
+      <tr>
+        <td>Name : </td>
+        <td><input type="text" name="name" placeholder="Choose a username"></input></td>
+      </tr>
+      <tr>
+        <td>Email : </td>
+        <td><input type="email" name="email" placeholder="you@example.com"></input></td>
+      </tr>
+      <tr>
+        <td>User</td>
+        <td><input type="text" name="user" placeholder="Create a password"></input></td>
+      </tr>
+      <tr>
+      <tr>
+        <td>Password</td>
+        <td><input type="password" name="password" placeholder="Repeat your password"></input></td>
+      </tr>
+      <tr>
+        <td><input type="submit" value="Sign Up"></input></td>
+        <td><input type="reset" value="Reset"></input></td>
+      </tr>
+    </table>
+  </form>
+</div>
+
 </body>
 </html>
