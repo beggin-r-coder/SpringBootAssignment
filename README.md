@@ -171,9 +171,9 @@ Future topics I will explore:
 
 <p align="center">
 
-<img height="170" src="https://github-readme-stats.vercel.app/api?username=YOUR_GITHUB_USERNAME&show_icons=true&theme=radical"/>
+<img height="170" src="https://github-readme-stats.vercel.app/api?username=beggin-r-coder&show_icons=true&theme=radical"/>
 
-<img height="170" src="https://github-readme-stats.vercel.app/api/top-langs/?username=YOUR_GITHUB_USERNAME&layout=compact&theme=radical"/>
+<img height="170" src="https://github-readme-stats.vercel.app/api/top-langs/?username=beggin-r-coder&layout=compact&theme=radical"/>
 
 </p>
 
@@ -182,7 +182,7 @@ Future topics I will explore:
 # 🔥 Contribution Graph
 
 <p align="center">
-<img src="https://github-readme-activity-graph.vercel.app/graph?username=YOUR_GITHUB_USERNAME&theme=react-dark">
+<img src="https://github-readme-activity-graph.vercel.app/graph?username=beggin-r-coder&theme=react-dark">
 </p>
 
 ---
