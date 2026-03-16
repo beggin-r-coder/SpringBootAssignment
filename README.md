@@ -19,7 +19,7 @@ My goal is to **master backend engineering and system design** through consisten
 # ⚙️ Tech Stack
 
 <p align="center">
-<img src="https://skillicons.dev/icons?i=java,spring,mysql,maven,git,github,idea"/>
+<img src="https://skillicons.dev/icons?i=java,spring,mysql,maven,git,github,eclipse"/>
 </p>
 
 Technologies used in this repository:
