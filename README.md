@@ -72,13 +72,8 @@ This repository contains examples and practice code for:
 # 📂 Repository Structure
 
 ```
-springboot-daily-learning
+UEMSpringBootMVC
 │
-├── day1-spring-introduction
-├── day2-spring-mvc
-├── day3-rest-api
-├── day4-jpa-hibernate
-├── day5-login-system
 │
 ├── src/main/java
 │   ├── controller
@@ -102,7 +97,7 @@ Each folder contains:
 ### 1️⃣ Clone Repository
 
 ```bash
-git clone https://github.com/YOUR_GITHUB_USERNAME/springboot-daily-learning.git
+git clone https://github.com/beggin-r-codder/UEMSpringBootMVC.git
 ```
 
 ---
@@ -123,7 +118,7 @@ Run the main Spring Boot class:
 
 ```java
 @SpringBootApplication
-public class Application {
+public class UEMSpringBootMVC {
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
     }
@@ -135,7 +130,7 @@ public class Application {
 ### 4️⃣ Open Browser
 
 ```
-http://localhost:8080
+http://localhost:9090
 ```
 
 ---
@@ -146,8 +141,8 @@ http://localhost:8080
 |----|------|
 | Day 1 | Spring Boot Introduction |
 | Day 2 | Spring MVC |
-| Day 3 | REST APIs |
-| Day 4 | JPA & Hibernate |
+| Day 3 | Login System(Beginner) with JPA & Hibernate |
+| Day 4 | REST APIs |
 | Day 5 | Login System |
 
 More topics will be added as I continue learning.
