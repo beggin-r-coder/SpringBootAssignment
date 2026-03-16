@@ -13,4 +13,11 @@ public class LoginService {
 		return loginRepository.save(userEntity);
 	}
 	
+	public boolean validateUser(String username, String password) {
+		UserEntity user = loginRepository.findByUserAndPassword(username, password);
+		if(user!=null)
+			return true;
+		return false;
+	}
+	
 }

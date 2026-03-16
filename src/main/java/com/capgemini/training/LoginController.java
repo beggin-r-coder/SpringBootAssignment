@@ -21,11 +21,16 @@ public class LoginController {
 	
 	@PostMapping("/login")
 	public String validate(String user, String password) {
+		String page = null;
 		System.out.println(user);
 		System.out.println(password);
-		if(user.isEmpty()||password.isEmpty())
-			return "login.jsp";
-		return "home.jsp";
+		
+		boolean flag = loginService.validateUser(user, password);
+		if(flag)
+			page = "home.jsp";
+		else
+			page = "login.jsp";
+		return page;
 	}
 	
 	@PostMapping("/sign-up")
