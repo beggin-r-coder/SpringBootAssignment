@@ -84,7 +84,8 @@ h1 span { color: #7c4dff; }
 }
 
 .divider {
-	height: 1px; background: rgba(255,255,255,0.07);
+	height: 1px;
+	background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
 	margin: 32px 0;
 	animation: fadeUp 0.7s 0.28s cubic-bezier(0.22,1,0.36,1) both;
 	opacity: 0; animation-fill-mode: forwards;
@@ -99,28 +100,43 @@ h1 span { color: #7c4dff; }
 
 .table-top {
 	display: flex; align-items: center; justify-content: space-between;
-	margin-bottom: 18px;
+	margin-bottom: 20px;
 }
 .table-title {
 	font-family: 'Playfair Display', serif;
-	font-size: 18px; font-weight: 600; color: #f0eeff;
+	font-size: 20px; font-weight: 600; color: #f0eeff;
+	letter-spacing: -0.2px;
 }
 .table-badge {
-	font-size: 11px; font-weight: 500; letter-spacing: 0.07em;
+	font-size: 11px; font-weight: 500; letter-spacing: 0.08em;
 	text-transform: uppercase; color: #1eb88c;
-	background: rgba(30,184,140,0.1);
-	border: 1px solid rgba(30,184,140,0.2);
-	padding: 4px 12px; border-radius: 99px;
+	background: rgba(30,184,140,0.08);
+	border: 1px solid rgba(30,184,140,0.18);
+	padding: 5px 14px; border-radius: 99px;
+	display: inline-flex; align-items: center; gap: 6px;
+}
+.table-badge::before {
+	content: '';
+	display: inline-block; width: 6px; height: 6px;
+	border-radius: 50%; background: #1eb88c;
+	animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse {
+	0%, 100% { opacity: 1; transform: scale(1); }
+	50% { opacity: 0.4; transform: scale(0.8); }
 }
 
-/* TABLE */
-.table-wrapper { width: 100%; overflow-x: auto; margin-top: 0; }
+/* TABLE SHELL */
+.table-wrapper {
+	width: 100%; overflow-x: auto;
+	border-radius: 16px;
+	border: 1px solid rgba(255,255,255,0.07);
+	background: rgba(255,255,255,0.02);
+}
 
 .emp-table {
 	width: 100%; border-collapse: collapse;
 	table-layout: fixed;
-	background: transparent;
-	border: none; border-radius: 0;
 }
 
 .emp-table colgroup col:nth-child(1) { width: 6%; }
@@ -130,38 +146,100 @@ h1 span { color: #7c4dff; }
 .emp-table colgroup col:nth-child(5) { width: 16%; }
 .emp-table colgroup col:nth-child(6) { width: 16%; }
 
-.emp-table thead tr { border-bottom: 1px solid rgba(255,255,255,0.08); }
+/* HEADER */
+.emp-table thead {
+	background: linear-gradient(90deg,
+		rgba(124,77,255,0.12) 0%,
+		rgba(30,184,140,0.06) 50%,
+		rgba(124,77,255,0.08) 100%);
+}
 .emp-table th {
-	padding: 10px 14px; text-align: left;
-	font-size: 11px; font-weight: 500;
-	letter-spacing: 0.07em; text-transform: uppercase;
-	color: rgba(255,255,255,0.35);
-	border-bottom: 1px solid rgba(255,255,255,0.08);
+	padding: 14px 18px; text-align: left;
+	font-size: 10px; font-weight: 600;
+	letter-spacing: 0.1em; text-transform: uppercase;
+	color: rgba(255,255,255,0.38);
+	border-bottom: 1px solid rgba(255,255,255,0.07);
+	position: relative;
+}
+.emp-table th:not(:last-child)::after {
+	content: '';
+	position: absolute; right: 0; top: 25%; bottom: 25%;
+	width: 1px; background: rgba(255,255,255,0.06);
 }
 
-.emp-table tbody tr { border-bottom: 1px solid rgba(255,255,255,0.04); transition: background 0.18s; }
-.emp-table tbody tr:last-child { border-bottom: none; }
-.emp-table tbody tr:hover { background: rgba(124,77,255,0.06); }
-
-.emp-table td {
-	padding: 13px 14px; font-size: 13px;
-	color: rgba(255,255,255,0.75); vertical-align: middle;
-	overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+/* ROWS */
+.emp-table tbody tr {
 	border-bottom: 1px solid rgba(255,255,255,0.04);
+	transition: background 0.2s;
 }
-.emp-table td:first-child { color: rgba(255,255,255,0.3); font-size: 12px; }
-.emp-table td:nth-child(2) {
-	color: #c4b5ff; font-size: 12px; font-weight: 500;
+.emp-table tbody tr:last-child { border-bottom: none; }
+.emp-table tbody tr:hover { background: rgba(124,77,255,0.07); }
+.emp-table tbody tr:hover td:first-child {
+	border-left: 2px solid #7c4dff;
+	padding-left: 16px;
 }
-.emp-table td:nth-child(4) { color: rgba(255,255,255,0.42); font-size: 12px; }
-.emp-table td:last-child { color: #1eb88c; font-size: 12px; }
+
+/* CELLS */
+.emp-table td {
+	padding: 15px 18px; font-size: 13px;
+	color: rgba(255,255,255,0.7); vertical-align: middle;
+	overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+	transition: color 0.2s;
+}
+
+/* ID */
+.emp-table td:first-child {
+	color: rgba(255,255,255,0.22); font-size: 11px; font-weight: 500;
+	border-left: 2px solid transparent;
+	transition: border-color 0.2s, padding 0.2s;
+}
+
+/* EmpId pill */
+.empid-pill {
+	display: inline-block;
+	background: rgba(124,77,255,0.15); color: #c4b5ff;
+	border: 1px solid rgba(124,77,255,0.25);
+	border-radius: 8px; padding: 3px 10px;
+	font-size: 11px; font-weight: 600; letter-spacing: 0.04em;
+}
+
+/* Name with avatar initial */
+.emp-table td:nth-child(3) { color: #f0eeff; font-weight: 500; }
+.name-wrap { display: flex; align-items: center; gap: 10px; }
+.avatar-dot {
+	width: 28px; height: 28px; border-radius: 50%; flex-shrink: 0;
+	display: flex; align-items: center; justify-content: center;
+	font-size: 11px; font-weight: 600; color: #fff; text-transform: uppercase;
+	background: linear-gradient(135deg, #7c4dff, #1eb88c);
+}
+.name-text { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+/* Email */
+.emp-table td:nth-child(4) { color: rgba(255,255,255,0.36); font-size: 12px; }
+
+/* Contact */
+.emp-table td:nth-child(5) { color: rgba(255,255,255,0.52); font-size: 12px; }
+
+/* City chip */
+.emp-table td:nth-child(6) { font-size: 12px; }
+.city-chip {
+	display: inline-flex; align-items: center; gap: 5px;
+	background: rgba(30,184,140,0.09); color: #1eb88c;
+	border: 1px solid rgba(30,184,140,0.18);
+	border-radius: 8px; padding: 3px 10px;
+	font-size: 11px; font-weight: 500;
+}
+.city-chip::before {
+	content: ''; width: 5px; height: 5px;
+	border-radius: 50%; background: #1eb88c; flex-shrink: 0;
+}
 
 .emp-table .no-data {
-	text-align: center; padding: 32px;
-	color: rgba(255,255,255,0.25); font-size: 14px;
+	text-align: center; padding: 40px;
+	color: rgba(255,255,255,0.2); font-size: 14px;
 }
 
-/* NAV LINKS */
+/* NAV */
 .nav-links {
 	display: flex; justify-content: center; gap: 10px;
 	animation: fadeUp 0.7s 0.44s cubic-bezier(0.22,1,0.36,1) both;
@@ -249,11 +327,16 @@ h1 span { color: #7c4dff; }
 							for (Employee emp : employees) { %>
 							<tr>
 								<td><%= emp.getId() %></td>
-								<td><%= emp.getEmpId() %></td>
-								<td title="<%= emp.getEmpName() %>"><%= emp.getEmpName() %></td>
+								<td><span class="empid-pill"><%= emp.getEmpId() %></span></td>
+								<td title="<%= emp.getEmpName() %>">
+									<div class="name-wrap">
+										<div class="avatar-dot"><%= emp.getEmpName().substring(0,1) %></div>
+										<span class="name-text"><%= emp.getEmpName() %></span>
+									</div>
+								</td>
 								<td title="<%= emp.getEmpEmail() %>"><%= emp.getEmpEmail() %></td>
 								<td><%= emp.getEmpContactNo() %></td>
-								<td><%= emp.getEmpCity() %></td>
+								<td><span class="city-chip"><%= emp.getEmpCity() %></span></td>
 							</tr>
 							<% }
 						} else { %>
