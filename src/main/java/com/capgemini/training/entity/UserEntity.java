@@ -1,4 +1,4 @@
-package com.capgemini.training;
+package com.capgemini.training.entity;
 
 import jakarta.persistence.*;
 
@@ -12,10 +12,10 @@ public class UserEntity {
 	@Column(name="name")
 	private String name;
 	
-	@Column(name="email")
+	@Column(name="email", unique = true)
 	private String email;
 	
-	@Column(name="user")
+	@Column(name="user", unique = true)
 	private String user;
 	
 	@Column(name="password")
