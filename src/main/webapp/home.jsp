@@ -264,6 +264,24 @@ h1 span { color: #7c4dff; }
 	color: rgba(255,160,160,0.85);
 }
 
+/* Add employee button (themed pill) */
+.add-emp-btn {
+	display: inline-block;
+	margin: 12px auto 20px;
+	padding: 10px 18px;
+	border-radius: 12px;
+	background: linear-gradient(135deg, #1eb88c 0%, #0e9070 100%);
+	color: #fff; text-decoration: none; font-weight: 600;
+	border: 1px solid rgba(30,184,140,0.18);
+	box-shadow: 0 6px 22px rgba(30,184,140,0.22);
+	transition: transform 0.18s, box-shadow 0.18s, opacity 0.18s;
+}
+.add-emp-btn:hover {
+	transform: translateY(-3px);
+	box-shadow: 0 12px 34px rgba(30,184,140,0.26);
+}
+.add-emp-btn:active { transform: translateY(0); }
+
 @keyframes fadeUp {
 	from { opacity: 0; transform: translateY(22px); }
 	to   { opacity: 1; transform: translateY(0); }
@@ -292,7 +310,9 @@ h1 span { color: #7c4dff; }
 		<p class="sub">You're logged in. What would you like to do next?</p>
 
 		<div class="divider"></div>
-
+		
+		<a href = "addemp" class="add-emp-btn">Add a new Employee</a>
+		
 		<div class="table-section">
 			<div class="table-top">
 				<span class="table-title">All Employees</span>
