@@ -309,8 +309,8 @@
     if (!out.classList.contains('empty')) {
       navigator.clipboard.writeText(out.textContent);
       const btn = document.getElementById('copy-btn');
-      btn.textContent = '✓'; btn.style.color = '#1eb88c';
-      setTimeout(() => { btn.textContent = '⧉'; btn.style.color = ''; }, 1500);
+      btn.textContent = 'Copied'; btn.style.color = '#1eb88c';
+      setTimeout(() => { btn.textContent = 'Copy'; btn.style.color = ''; }, 1500);
     }
   }
 </script>

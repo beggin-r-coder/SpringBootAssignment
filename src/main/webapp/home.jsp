@@ -16,7 +16,7 @@ body {
 	font-family: 'DM Sans', sans-serif;
 	color: #f0eeff;
 	position: relative;
-	padding: 48px 24px 64px;
+	padding: 40px 20px 56px;
 }
 
 body::before {
@@ -46,13 +46,10 @@ body::after {
 
 .card {
 	position: relative; z-index: 10;
-	max-width: 1100px;
-	margin: 0 auto;
-	width: 100%;
+	max-width: 1080px; margin: 0 auto; width: 100%;
 	background: rgba(255,255,255,0.04);
 	border: 1px solid rgba(255,255,255,0.09);
-	border-radius: 24px;
-	padding: 44px 48px 40px;
+	border-radius: 22px; padding: 40px 44px 36px;
 	backdrop-filter: blur(24px);
 	box-shadow: 0 32px 80px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.07);
 	animation: fadeUp 0.7s cubic-bezier(0.22,1,0.36,1) both;
@@ -60,36 +57,47 @@ body::after {
 }
 
 .greeting {
-	font-size: 12px; font-weight: 500; letter-spacing: 0.1em;
-	text-transform: uppercase; color: #1eb88c; margin-bottom: 10px;
+	font-size: 11px; font-weight: 500; letter-spacing: 0.1em;
+	text-transform: uppercase; color: #1eb88c; margin-bottom: 8px;
 	animation: fadeUp 0.7s 0.1s cubic-bezier(0.22,1,0.36,1) both;
 	opacity: 0; animation-fill-mode: forwards;
 }
-
 h1 {
 	font-family: 'Playfair Display', serif;
-	font-size: 30px; font-weight: 600;
-	color: #f0eeff; line-height: 1.2;
-	letter-spacing: -0.3px; margin-bottom: 8px;
+	font-size: 28px; font-weight: 600; color: #f0eeff;
+	line-height: 1.2; letter-spacing: -0.3px; margin-bottom: 6px;
 	animation: fadeUp 0.7s 0.16s cubic-bezier(0.22,1,0.36,1) both;
 	opacity: 0; animation-fill-mode: forwards;
 }
 h1 span { color: #7c4dff; }
-
 .sub {
-	font-size: 14px; color: rgba(255,255,255,0.32);
-	font-weight: 300; margin-bottom: 0;
+	font-size: 13px; color: rgba(255,255,255,0.28); font-weight: 300;
 	animation: fadeUp 0.7s 0.22s cubic-bezier(0.22,1,0.36,1) both;
 	opacity: 0; animation-fill-mode: forwards;
 }
 
 .divider {
 	height: 1px;
-	background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
-	margin: 32px 0;
+	background: linear-gradient(90deg, transparent, rgba(255,255,255,0.09), transparent);
+	margin: 26px 0;
 	animation: fadeUp 0.7s 0.28s cubic-bezier(0.22,1,0.36,1) both;
 	opacity: 0; animation-fill-mode: forwards;
 }
+
+/* ADD BUTTON */
+.add-emp-btn {
+	display: inline-flex; align-items: center; gap: 6px;
+	margin: 0 auto 22px;
+	padding: 8px 18px; border-radius: 10px;
+	background: linear-gradient(135deg, #1eb88c 0%, #0e9070 100%);
+	color: #fff; text-decoration: none; font-size: 12px; font-weight: 600;
+	letter-spacing: 0.02em;
+	border: 1px solid rgba(30,184,140,0.15);
+	box-shadow: 0 4px 16px rgba(30,184,140,0.2);
+	transition: transform 0.18s, box-shadow 0.18s;
+}
+.add-emp-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(30,184,140,0.3); }
+.add-emp-btn:active { transform: translateY(0); }
 
 /* TABLE SECTION */
 .table-section {
@@ -97,146 +105,166 @@ h1 span { color: #7c4dff; }
 	animation: fadeUp 0.7s 0.34s cubic-bezier(0.22,1,0.36,1) both;
 	opacity: 0; animation-fill-mode: forwards;
 }
-
 .table-top {
 	display: flex; align-items: center; justify-content: space-between;
-	margin-bottom: 20px;
+	margin-bottom: 14px;
 }
 .table-title {
 	font-family: 'Playfair Display', serif;
-	font-size: 20px; font-weight: 600; color: #f0eeff;
-	letter-spacing: -0.2px;
+	font-size: 18px; font-weight: 600; color: #f0eeff;
 }
 .table-badge {
-	font-size: 11px; font-weight: 500; letter-spacing: 0.08em;
+	font-size: 10px; font-weight: 600; letter-spacing: 0.08em;
 	text-transform: uppercase; color: #1eb88c;
-	background: rgba(30,184,140,0.08);
-	border: 1px solid rgba(30,184,140,0.18);
-	padding: 5px 14px; border-radius: 99px;
-	display: inline-flex; align-items: center; gap: 6px;
+	background: rgba(30,184,140,0.08); border: 1px solid rgba(30,184,140,0.16);
+	padding: 4px 12px; border-radius: 99px;
+	display: inline-flex; align-items: center; gap: 5px;
 }
 .table-badge::before {
-	content: '';
-	display: inline-block; width: 6px; height: 6px;
-	border-radius: 50%; background: #1eb88c;
+	content: ''; width: 5px; height: 5px; border-radius: 50%;
+	background: #1eb88c; flex-shrink: 0;
 	animation: pulse 2s ease-in-out infinite;
 }
-@keyframes pulse {
-	0%, 100% { opacity: 1; transform: scale(1); }
-	50% { opacity: 0.4; transform: scale(0.8); }
-}
+@keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.35;transform:scale(0.75)} }
 
-/* TABLE SHELL */
+/* TABLE */
 .table-wrapper {
-	width: 100%; overflow-x: auto;
-	border-radius: 16px;
+	width: 100%; border-radius: 14px;
 	border: 1px solid rgba(255,255,255,0.07);
-	background: rgba(255,255,255,0.02);
+	background: rgba(255,255,255,0.015);
+	overflow: hidden;
 }
+.emp-table { width: 100%; border-collapse: collapse; table-layout: fixed; }
 
-.emp-table {
-	width: 100%; border-collapse: collapse;
-	table-layout: fixed;
-}
-
-.emp-table colgroup col:nth-child(1) { width: 6%; }
-.emp-table colgroup col:nth-child(2) { width: 10%; }
-.emp-table colgroup col:nth-child(3) { width: 20%; }
-.emp-table colgroup col:nth-child(4) { width: 32%; }
-.emp-table colgroup col:nth-child(5) { width: 16%; }
-.emp-table colgroup col:nth-child(6) { width: 16%; }
+/* Column widths — total 100%
+   Id:4  EmpId:8  Name:15  Email:22  Contact:13  City:17  Actions:21  */
+.emp-table colgroup col:nth-child(1) { width: 4%; }
+.emp-table colgroup col:nth-child(2) { width: 8%; }
+.emp-table colgroup col:nth-child(3) { width: 15%; }
+.emp-table colgroup col:nth-child(4) { width: 22%; }
+.emp-table colgroup col:nth-child(5) { width: 13%; }
+.emp-table colgroup col:nth-child(6) { width: 17%; }
+.emp-table colgroup col:nth-child(7) { width: 21%; }
 
 /* HEADER */
 .emp-table thead {
 	background: linear-gradient(90deg,
-		rgba(124,77,255,0.12) 0%,
-		rgba(30,184,140,0.06) 50%,
-		rgba(124,77,255,0.08) 100%);
+		rgba(124,77,255,0.1) 0%,
+		rgba(30,184,140,0.05) 60%,
+		rgba(124,77,255,0.07) 100%);
 }
 .emp-table th {
-	padding: 14px 18px; text-align: left;
-	font-size: 10px; font-weight: 600;
+	padding: 11px 12px; text-align: left;
+	font-size: 9px; font-weight: 700;
 	letter-spacing: 0.1em; text-transform: uppercase;
-	color: rgba(255,255,255,0.38);
-	border-bottom: 1px solid rgba(255,255,255,0.07);
-	position: relative;
-}
-.emp-table th:not(:last-child)::after {
-	content: '';
-	position: absolute; right: 0; top: 25%; bottom: 25%;
-	width: 1px; background: rgba(255,255,255,0.06);
+	color: rgba(255,255,255,0.32);
+	border-bottom: 1px solid rgba(255,255,255,0.06);
+	white-space: nowrap; overflow: hidden;
 }
 
 /* ROWS */
 .emp-table tbody tr {
-	border-bottom: 1px solid rgba(255,255,255,0.04);
-	transition: background 0.2s;
+	border-bottom: 1px solid rgba(255,255,255,0.035);
+	transition: background 0.18s;
 }
 .emp-table tbody tr:last-child { border-bottom: none; }
-.emp-table tbody tr:hover { background: rgba(124,77,255,0.07); }
+.emp-table tbody tr:hover { background: rgba(124,77,255,0.06); }
 .emp-table tbody tr:hover td:first-child {
-	border-left: 2px solid #7c4dff;
-	padding-left: 16px;
+	border-left: 2px solid #7c4dff; padding-left: 10px;
 }
 
 /* CELLS */
 .emp-table td {
-	padding: 15px 18px; font-size: 13px;
-	color: rgba(255,255,255,0.7); vertical-align: middle;
+	padding: 11px 12px; font-size: 12px;
+	color: rgba(255,255,255,0.65); vertical-align: middle;
 	overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
-	transition: color 0.2s;
 }
 
-/* ID */
+/* Id */
 .emp-table td:first-child {
-	color: rgba(255,255,255,0.22); font-size: 11px; font-weight: 500;
+	color: rgba(255,255,255,0.2); font-size: 10px; font-weight: 500;
 	border-left: 2px solid transparent;
-	transition: border-color 0.2s, padding 0.2s;
+	transition: border-color 0.18s, padding 0.18s;
 }
 
 /* EmpId pill */
 .empid-pill {
 	display: inline-block;
-	background: rgba(124,77,255,0.15); color: #c4b5ff;
-	border: 1px solid rgba(124,77,255,0.25);
-	border-radius: 8px; padding: 3px 10px;
-	font-size: 11px; font-weight: 600; letter-spacing: 0.04em;
+	background: rgba(124,77,255,0.14); color: #c4b5ff;
+	border: 1px solid rgba(124,77,255,0.22);
+	border-radius: 6px; padding: 2px 8px;
+	font-size: 10px; font-weight: 700; letter-spacing: 0.04em;
 }
 
-/* Name with avatar initial */
-.emp-table td:nth-child(3) { color: #f0eeff; font-weight: 500; }
-.name-wrap { display: flex; align-items: center; gap: 10px; }
+/* Name */
+.emp-table td:nth-child(3) { color: #f0eeff; font-weight: 500; font-size: 12px; }
+.name-wrap { display: flex; align-items: center; gap: 8px; }
 .avatar-dot {
-	width: 28px; height: 28px; border-radius: 50%; flex-shrink: 0;
+	width: 24px; height: 24px; border-radius: 50%; flex-shrink: 0;
 	display: flex; align-items: center; justify-content: center;
-	font-size: 11px; font-weight: 600; color: #fff; text-transform: uppercase;
+	font-size: 10px; font-weight: 700; color: #fff; text-transform: uppercase;
 	background: linear-gradient(135deg, #7c4dff, #1eb88c);
 }
 .name-text { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 
 /* Email */
-.emp-table td:nth-child(4) { color: rgba(255,255,255,0.36); font-size: 12px; }
+.emp-table td:nth-child(4) { color: rgba(255,255,255,0.32); font-size: 11px; }
 
 /* Contact */
-.emp-table td:nth-child(5) { color: rgba(255,255,255,0.52); font-size: 12px; }
+.emp-table td:nth-child(5) { color: rgba(255,255,255,0.45); font-size: 11px; }
 
-/* City chip */
-.emp-table td:nth-child(6) { font-size: 12px; }
+/* City — allow chip to wrap text if long, no clipping */
+.emp-table td:nth-child(6) {
+	font-size: 11px;
+	overflow: visible;
+	white-space: normal;
+}
 .city-chip {
-	display: inline-flex; align-items: center; gap: 5px;
-	background: rgba(30,184,140,0.09); color: #1eb88c;
-	border: 1px solid rgba(30,184,140,0.18);
-	border-radius: 8px; padding: 3px 10px;
-	font-size: 11px; font-weight: 500;
+	display: inline-flex; align-items: center; gap: 4px;
+	background: rgba(30,184,140,0.08); color: #1eb88c;
+	border: 1px solid rgba(30,184,140,0.16);
+	border-radius: 6px; padding: 2px 8px;
+	font-size: 10px; font-weight: 600;
+	white-space: nowrap;
+	max-width: 100%;
+	overflow: hidden; text-overflow: ellipsis;
 }
 .city-chip::before {
-	content: ''; width: 5px; height: 5px;
+	content: ''; width: 4px; height: 4px;
 	border-radius: 50%; background: #1eb88c; flex-shrink: 0;
 }
 
+/* Actions */
+.emp-table td:nth-child(7) { overflow: visible; white-space: nowrap; }
+.action-group { display: flex; align-items: center; gap: 4px; }
+.action-link {
+	display: inline-flex; align-items: center;
+	padding: 3px 9px; border-radius: 6px;
+	font-size: 10px; font-weight: 700; letter-spacing: 0.03em;
+	text-decoration: none; white-space: nowrap;
+	transition: transform 0.15s, box-shadow 0.15s, background 0.15s;
+}
+.action-link:hover { transform: translateY(-1px); }
+.action-link:active { transform: translateY(0); }
+.action-link.view {
+	background: rgba(124,77,255,0.13); color: #c4b5ff;
+	border: 1px solid rgba(124,77,255,0.24);
+}
+.action-link.view:hover { background: rgba(124,77,255,0.22); box-shadow: 0 3px 10px rgba(124,77,255,0.18); }
+.action-link.edit {
+	background: rgba(232,168,56,0.11); color: #f0c060;
+	border: 1px solid rgba(232,168,56,0.22);
+}
+.action-link.edit:hover { background: rgba(232,168,56,0.2); box-shadow: 0 3px 10px rgba(232,168,56,0.14); }
+.action-link.delete {
+	background: rgba(232,60,60,0.1); color: #ff8080;
+	border: 1px solid rgba(232,60,60,0.2);
+}
+.action-link.delete:hover { background: rgba(232,60,60,0.2); box-shadow: 0 3px 10px rgba(232,60,60,0.16); }
+
 .emp-table .no-data {
-	text-align: center; padding: 40px;
-	color: rgba(255,255,255,0.2); font-size: 14px;
+	text-align: center; padding: 36px;
+	color: rgba(255,255,255,0.2); font-size: 13px;
 }
 
 /* NAV */
@@ -246,55 +274,17 @@ h1 span { color: #7c4dff; }
 	opacity: 0; animation-fill-mode: forwards;
 }
 .nav-links a {
-	padding: 9px 20px; border-radius: 10px;
-	font-size: 13px; text-decoration: none;
-	border: 1px solid rgba(255,255,255,0.09);
-	color: rgba(255,255,255,0.45);
-	background: rgba(255,255,255,0.04);
+	padding: 8px 18px; border-radius: 10px; font-size: 12px;
+	text-decoration: none; border: 1px solid rgba(255,255,255,0.09);
+	color: rgba(255,255,255,0.4); background: rgba(255,255,255,0.04);
 	transition: background 0.22s, color 0.22s, border-color 0.22s, transform 0.18s;
 }
-.nav-links a:hover {
-	background: rgba(124,77,255,0.1);
-	border-color: rgba(124,77,255,0.3);
-	color: #c4b5ff; transform: translateY(-2px);
-}
-.nav-links a.logout:hover {
-	background: rgba(255,80,80,0.1);
-	border-color: rgba(255,80,80,0.25);
-	color: rgba(255,160,160,0.85);
-}
-
-/* Add employee button (themed pill) */
-.add-emp-btn {
-	display: inline-block;
-	margin: 12px auto 20px;
-	padding: 10px 18px;
-	border-radius: 12px;
-	background: linear-gradient(135deg, #1eb88c 0%, #0e9070 100%);
-	color: #fff; text-decoration: none; font-weight: 600;
-	border: 1px solid rgba(30,184,140,0.18);
-	box-shadow: 0 6px 22px rgba(30,184,140,0.22);
-	transition: transform 0.18s, box-shadow 0.18s, opacity 0.18s;
-}
-.add-emp-btn:hover {
-	transform: translateY(-3px);
-	box-shadow: 0 12px 34px rgba(30,184,140,0.26);
-}
-.add-emp-btn:active { transform: translateY(0); }
+.nav-links a:hover { background: rgba(124,77,255,0.1); border-color: rgba(124,77,255,0.3); color: #c4b5ff; transform: translateY(-2px); }
+.nav-links a.logout:hover { background: rgba(255,80,80,0.1); border-color: rgba(255,80,80,0.25); color: rgba(255,160,160,0.85); }
 
 @keyframes fadeUp {
-	from { opacity: 0; transform: translateY(22px); }
+	from { opacity: 0; transform: translateY(20px); }
 	to   { opacity: 1; transform: translateY(0); }
-}
-
-@media (max-width: 900px) {
-	.card { padding: 28px 24px; }
-	.emp-table colgroup col:nth-child(3) { width: 28%; }
-	.emp-table colgroup col:nth-child(4) { width: 36%; }
-}
-@media (max-width: 600px) {
-	.card { padding: 20px 16px; }
-	.emp-table th, .emp-table td { padding: 10px 10px; font-size: 12px; }
 }
 </style>
 </head>
@@ -310,9 +300,9 @@ h1 span { color: #7c4dff; }
 		<p class="sub">You're logged in. What would you like to do next?</p>
 
 		<div class="divider"></div>
-		
-		<a href = "addemp" class="add-emp-btn">Add a new Employee</a>
-		
+
+		<a href="addemp" class="add-emp-btn">+ Add a new Employee</a>
+
 		<div class="table-section">
 			<div class="table-top">
 				<span class="table-title">All Employees</span>
@@ -331,6 +321,7 @@ h1 span { color: #7c4dff; }
 						<col />
 						<col />
 						<col />
+						<col />
 					</colgroup>
 					<thead>
 						<tr>
@@ -340,6 +331,7 @@ h1 span { color: #7c4dff; }
 							<th>Email</th>
 							<th>Contact No</th>
 							<th>City</th>
+							<th>Actions</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -356,12 +348,19 @@ h1 span { color: #7c4dff; }
 								</td>
 								<td title="<%= emp.getEmpEmail() %>"><%= emp.getEmpEmail() %></td>
 								<td><%= emp.getEmpContactNo() %></td>
-								<td><span class="city-chip"><%= emp.getEmpCity() %></span></td>
+								<td title="<%= emp.getEmpCity() %>"><span class="city-chip"><%= emp.getEmpCity() %></span></td>
+								<td>
+									<div class="action-group">
+										<a href="view-emp?empid=<%=emp.getId()%>" class="action-link view">View</a>
+										<a href="edit?empid=<%=emp.getId()%>" class="action-link edit">Edit</a>
+										<a href="delete?empid=<%=emp.getId()%>" class="action-link delete">Delete</a>
+									</div>
+								</td>
 							</tr>
 							<% }
 						} else { %>
 							<tr>
-								<td class="no-data" colspan="6">No employees found.</td>
+								<td class="no-data" colspan="7">No employees found.</td>
 							</tr>
 						<% } %>
 					</tbody>
