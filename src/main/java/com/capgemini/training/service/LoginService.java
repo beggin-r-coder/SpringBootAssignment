@@ -17,7 +17,7 @@ public class LoginService {
 	}
 	
 	public boolean validateUser(String username, String password) {
-		UserEntity user = loginRepository.findByUserAndPassword(username, password);
+		UserEntity user = loginRepository.findByUsernameAndPassword(username, password);
 		if(user!=null)
 			return true;
 		return false;

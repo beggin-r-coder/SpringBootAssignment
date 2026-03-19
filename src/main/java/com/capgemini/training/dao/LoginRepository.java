@@ -8,5 +8,5 @@ import com.capgemini.training.entity.UserEntity;
 @Repository
 public interface LoginRepository extends JpaRepository<UserEntity, Integer>{
 
-	UserEntity findByUserAndPassword(String username, String password);
+	UserEntity findByUsernameAndPassword(String username, String password);
 }

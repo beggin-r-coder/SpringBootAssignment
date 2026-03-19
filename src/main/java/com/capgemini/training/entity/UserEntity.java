@@ -15,8 +15,8 @@ public class UserEntity {
 	@Column(name="email", unique = true)
 	private String email;
 	
-	@Column(name="user", unique = true)
-	private String user;
+	@Column(name="username", unique = true)
+	private String username;
 	
 	@Column(name="password")
 	private String password;
@@ -46,11 +46,11 @@ public class UserEntity {
 	}
 
 	public String getUser() {
-		return user;
+		return username;
 	}
 
-	public void setUser(String user) {
-		this.user = user;
+	public void setUser(String username) {
+		this.username = username;
 	}
 
 	public String getPassword() {
