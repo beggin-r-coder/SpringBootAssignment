@@ -26,12 +26,12 @@ public class EmployeeController {
 			System.out.println("Emp : "+emp.getEmpName());
 		}
 		request.setAttribute("emplist", listOfEmployees);
-		return "home.jsp";
+		return "home";
 	}
 	
 	@GetMapping("/addemp")
 	public String createEmp() {
-		return "register-emp.jsp";
+		return "register-emp";
 		
 	}
 	
@@ -69,7 +69,7 @@ public class EmployeeController {
 		System.out.println("Id : "+id);
 		Employee emp = employeeService.getEmployeeByInfo(id);
 		request.setAttribute("emp", emp);
-		return "view-emp.jsp";
+		return "view-emp";
 	}
 	
 	@GetMapping("/edit")
@@ -77,7 +77,7 @@ public class EmployeeController {
 		System.out.println("Id : "+id);
 		Employee emp = employeeService.getEmployeeByInfo(id);
 		request.setAttribute("emp", emp);
-		return "edit-emp.jsp";
+		return "edit-emp";
 	}
 	
 	@PostMapping("/update")

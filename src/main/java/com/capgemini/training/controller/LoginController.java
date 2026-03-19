@@ -19,7 +19,7 @@ public class LoginController {
 	
 	@GetMapping("/")
 	public String loginPage() {
-		return "login.jsp";
+		return "login";
 	}
 	
 	@PostMapping("/login")
@@ -36,7 +36,7 @@ public class LoginController {
 				e.printStackTrace();
 			}
 		else
-			page = "login.jsp";
+			page = "login";
 		return page;
 	}
 	
@@ -60,7 +60,7 @@ public class LoginController {
 		
 		loginService.registerUser(userEntity);
 		
-		return "home.jsp";
+		return "home";
 	}
 	
 }
