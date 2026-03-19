@@ -353,7 +353,7 @@ h1 span { color: #7c4dff; }
 									<div class="action-group">
 										<a href="view-emp?id=<%=emp.getId()%>" class="action-link view">View</a>
 										<a href="edit?id=<%=emp.getId()%>" class="action-link edit">Edit</a>
-										<a href="delete?id=<%=emp.getId()%>" class="action-link delete">Delete</a>
+										<a href="delete?id=<%=emp.getId()%>" onclick="return confirm('Are you sure you want to delete this employee?')" class="action-link delete">Delete</a>
 									</div>
 								</td>
 							</tr>

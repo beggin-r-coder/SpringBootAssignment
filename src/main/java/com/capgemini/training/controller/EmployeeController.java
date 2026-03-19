@@ -71,4 +71,51 @@ public class EmployeeController {
 		request.setAttribute("emp", emp);
 		return "view-emp.jsp";
 	}
+	
+	@GetMapping("/edit")
+	public String editEmp(@RequestParam int id, HttpServletRequest request) {
+		System.out.println("Id : "+id);
+		Employee emp = employeeService.getEmployeeByInfo(id);
+		request.setAttribute("emp", emp);
+		return "edit-emp.jsp";
+	}
+	
+	@PostMapping("/update")
+	public String updateEmp(HttpServletRequest request) {
+		System.out.println("Update Employee is Called");
+		String id = request.getParameter("id");
+		String empId = request.getParameter("empId");
+		String empName = request.getParameter("empName");
+		String empEmail = request.getParameter("empEmail");
+		String empContact = request.getParameter("empContactNo");
+		String empCity = request.getParameter("empCity");	
+		
+		System.out.println("Emp Id : "+empId);
+		System.out.println("Emp Name : "+empName+" Email : "+empEmail);
+		System.out.println("Emp Contact : "+empContact+" City : "+empCity);
+		
+		Employee emp = new Employee();
+		
+		emp.setId(Integer.parseInt(id));
+		emp.setEmpId(empId);
+		emp.setEmpName(empName);
+		emp.setEmpEmail(empEmail);
+		emp.setEmpContactNo(Long.parseLong(empContact));
+		emp.setEmpCity(empCity);
+		
+		employeeService.registerEmployee(emp);
+
+		List<Employee> listOfEmployees = employeeService.getAllEmployees();
+		request.setAttribute("emplist", listOfEmployees);
+		
+		return "redirect:/allemp";
+		
+	}
+	@GetMapping("/delete")
+	public String deleteEmp(@RequestParam int id, HttpServletRequest request) {
+		System.out.println("Id : "+id);
+		employeeService.deleteEmployeeById(id);
+		return "redirect:/allemp";
+	}
+	
 }
