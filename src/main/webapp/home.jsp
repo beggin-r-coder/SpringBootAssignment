@@ -351,9 +351,9 @@ h1 span { color: #7c4dff; }
 								<td title="<%= emp.getEmpCity() %>"><span class="city-chip"><%= emp.getEmpCity() %></span></td>
 								<td>
 									<div class="action-group">
-										<a href="view-emp?empid=<%=emp.getId()%>" class="action-link view">View</a>
-										<a href="edit?empid=<%=emp.getId()%>" class="action-link edit">Edit</a>
-										<a href="delete?empid=<%=emp.getId()%>" class="action-link delete">Delete</a>
+										<a href="view-emp?id=<%=emp.getId()%>" class="action-link view">View</a>
+										<a href="edit?id=<%=emp.getId()%>" class="action-link edit">Edit</a>
+										<a href="delete?id=<%=emp.getId()%>" class="action-link delete">Delete</a>
 									</div>
 								</td>
 							</tr>

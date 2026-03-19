@@ -63,4 +63,12 @@ public class EmployeeController {
 		
 		return "redirect:/allemp";
 	}
+	
+	@GetMapping("/view-emp")
+	public String viewEmp(@RequestParam int id, HttpServletRequest request) {
+		System.out.println("Id : "+id);
+		Employee emp = employeeService.getEmployeeByInfo(id);
+		request.setAttribute("emp", emp);
+		return "view-emp.jsp";
+	}
 }

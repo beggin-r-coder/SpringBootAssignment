@@ -20,4 +20,8 @@ public class EmployeeService {
 	public Employee registerEmployee(Employee emp) {
 		return employeeRepository.save(emp);
 	}
+	
+	public Employee getEmployeeByInfo(int id) {
+		return employeeRepository.findById(id).get();
+	}
 }
